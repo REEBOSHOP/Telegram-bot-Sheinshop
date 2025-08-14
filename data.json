@@ -1,0 +1,51 @@
+{
+  "products": [
+    {
+      "name": "GCP300 USA 🇺🇸",
+      "price": "$16",
+      "qty": 10
+    },
+    {
+      "name": "GCP300 UK 🇬🇧",
+      "price": "$15.5",
+      "qty": 5
+    },
+    {
+      "name": "Hetzner limit 40",
+      "price": "$30",
+      "qty": 3
+    },
+    {
+      "name": "Gmail accounts",
+      "price": "$0.2",
+      "qty": 25
+    },
+    {
+      "name": "Outlook mails",
+      "price": "$0.15",
+      "qty": 30
+    },
+    {
+      "name": "Linode random IP",
+      "price": "$8",
+      "qty": 7
+    },
+    {
+      "name": "Azure free trial",
+      "price": "$7",
+      "qty": 6
+    },
+    {
+      "name": "AWS 32vCPU",
+      "price": "$7.5",
+      "qty": 10
+    },
+    {
+      "name": "AWS 8vCPU",
+      "price": "$5",
+      "qty": 8
+    }
+  ],
+  "users": [],
+  "orders": []
+}
