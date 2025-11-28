@@ -4,21 +4,19 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 import json, os, time, io
 
 # --- CONFIG ---
-TOKEN = "8147450974:AAEDX6Upq9RykK6_biog2IWyuHqbJ4beaAM"
-ADMIN_ID = 6872063705
+TOKEN = "8519448454:AAFZYiLzHSHaoeRjRYLMgoAabAvuZ0-7mhA"
+ADMIN_ID = 1922094509
 DATA_FILE = "data.json"
 
 PAYMENT_DETAILS = {
-    "BINANCE": "Binance ID - 780036072",
-    "TRC20": "USDT-TRC20 - TSpPrRz2cwZ1uDYNtjERjcEKLgELasHLp6",
-    "ERC20": "USDT-ERC20 - 0x6975d928905932ac619f6bb51b3362e5d4e715cf",
-    "BTC": "Bitcoin - 1HmjVM1ZH5HbmDDW6TC3GUq5rRZ4XTUxAG"
+    "BINANCE": "Binance ID - 858331046",
+    "TRC20": "USDT-TRC20 - TWGxHiP4mnZ8QvsQAWAVP4Eq8wqhmav7vu",
+    "BEP20": "USDT-BEP20 - 0x2ac82470586eb7dff041b60ef80678ddc4650e0c",
 }
 PAYMENT_LABELS = {
     "BINANCE": "Binance",
     "TRC20": "USDT (TRC20)",
-    "ERC20": "USDT (ERC20)",
-    "BTC": "Bitcoin"
+    "BEP20": "USDT (BEP20)",
 }
 
 TERMS_TEXT = (
@@ -28,8 +26,7 @@ TERMS_TEXT = (
     "3️⃣𝘕𝘰𝘵 𝘙𝘦𝘴𝘱𝘰𝘯𝘴𝘪𝘣𝘭𝘦 – 𝘠𝘰𝘶𝘳 𝘢𝘤𝘵𝘪𝘰𝘯𝘴 𝘢𝘧𝘵𝘦𝘳 𝘱𝘶𝘳𝘤𝘩𝘢𝘴𝘦 𝘢𝘳𝘦 𝘺𝘰𝘶𝘳 𝘳𝘦𝘴𝘱𝘰𝘯𝘴𝘪𝘣𝘪𝘭𝘪𝘵𝘺\n"
     "💯 𝙁𝙤𝙡𝙡𝙤𝙬 𝙩𝙝𝙚 𝙧𝙪𝙡𝙚𝙨, 𝙨𝙩𝙖𝙮 𝙨𝙚𝙘𝙪𝙧𝙚, 𝙖𝙣𝙙 𝙚𝙣𝙟𝙤𝙮 𝙮𝙤𝙪𝙧 𝙥𝙪𝙧𝙘𝙝𝙖𝙨𝙚! 💯\n"
     "⚜️Any questions, problem solving, please contact us at the contact below.\n"
-    "⚙️ @shein_black (Telegram)\n"
-    "Restock channel : https://t.me/proxies14"
+    "⚙️ @Brankplar (Telegram)\n"
 )
 
 def default_products():
@@ -37,12 +34,14 @@ def default_products():
         {"name": "GCP300 USA 🇺🇸", "price": "$16", "qty": 10},
         {"name": "GCP300 UK 🇬🇧", "price": "$15.5", "qty": 5},
         {"name": "Hetzner limit 40", "price": "$30", "qty": 3},
-        {"name": "Gmail accounts", "price": "$0.2", "qty": 25},
+        {"name": "Gmail accounts", "price": "$0.25", "qty": 25},
         {"name": "Outlook mails", "price": "$0.15", "qty": 30},
         {"name": "Linode random IP", "price": "$8", "qty": 7},
         {"name": "Azure free trial", "price": "$7", "qty": 6},
-        {"name": "AWS 32vCPU", "price": "$7.5", "qty": 10},
+        {"name": "AWS 32vCPU (AI SUPPORTED)", "price": "$13.5", "qty": 10},
         {"name": "AWS 8vCPU", "price": "$5", "qty": 8},
+        {"name": "OPENAI $1,000 CREDITS", "price": "400$", "qty": 1},
+        {"name": "OPENAI $2,500 CREDITS", "price": "1200$", "qty": 1},
     ]
 
 def load_data():
@@ -92,7 +91,7 @@ def buy_menu_keyboard():
 
 def support_keyboard():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("💬 Chat on Telegram", url="https://t.me/stein_black")],
+        [InlineKeyboardButton("💬 Chat on Telegram", url="https://t.me/brankplar")],
         [InlineKeyboardButton("📩 Contact Admin", callback_data="contact_admin")],
         [InlineKeyboardButton("⬅ Back", callback_data="menu_home")]
     ])
@@ -101,8 +100,7 @@ def payment_method_keyboard(product_name):
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("Binance", callback_data=f"pay_BINANCE_{product_name}")],
         [InlineKeyboardButton("USDT TRC20", callback_data=f"pay_TRC20_{product_name}")],
-        [InlineKeyboardButton("USDT ERC20", callback_data=f"pay_ERC20_{product_name}")],
-        [InlineKeyboardButton("Bitcoin", callback_data=f"pay_BTC_{product_name}")],
+        [InlineKeyboardButton("USDT BEP20", callback_data=f"pay_BEP20_{product_name}")],
         [InlineKeyboardButton("⬅ Back", callback_data="menu_buy")]
     ])
 
